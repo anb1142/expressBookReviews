@@ -35,7 +35,6 @@ regd_users.post("/login", (req, res) => {
 	const token = jwt.sign({ username }, "secret_key");
 	req.session.token = token;
 	return res.status(200).json({ message: "Customer Succesfully logged in" });
-	// return res.status(200).json({ token });
 });
 
 // Add a book review
@@ -52,7 +51,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
 
 	// Update or insert the review
 	book.reviews[username] = review;
-	console.log(book);
+
 	return res.status(200).json({ message: "Review updated/inserted successfully" });
 });
 
@@ -68,7 +67,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
 
 	// Update or insert the review
 	delete book.reviews[username];
-	console.log(book);
+
 	return res.status(200).json({ message: "Review deleted" });
 });
 
